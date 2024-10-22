@@ -1,0 +1,18 @@
+
+Journal généré lors de l'exécution des fichiers de règles récupérées par le programme Python. Pour chaque règle non fonctionnelle sur notre version de Suricata, une première ligne décrit l'erreur qui s'est produite et une seconde ligne donne la règle qui a causé l'erreur ainsi que son fichier et sa ligne source.
+
+\vspace{1em}
+
+\begin{figure}[h]%
+    \center%
+\begin{lstlisting}[language=Bash]
+[2449438 - Suricata-Main] 2024-09-26 09:14:21 Error: detect-parse: "$HOME_NET" is not a valid direction modifier, "->" and "<>" are supported.
+[2449438 - Suricata-Main] 2024-09-26 09:14:21 Error: detect: error parsing signature "alert tcp $EXTERNAL_NET $HTTP_PORTS-> $HOME_NET any (msg: "MISP event:https://10.0.37.3/events/view/430";flow:established,to_client; content:"// stop for sometime if needed"; classtype:trojan-activity;reference:url,https://10.0.37.3/events/view/430; rev:1; sid:10924794;)" from file rules/misp/misp.rules at line 69127
+[2449438 - Suricata-Main] 2024-09-26 09:14:21 Error: detect-parse: bad option value formatting (possible missing semicolon) for keyword content: '"/4419d5733u64c64888l9223d5belafc887d0.html__'
+[2449438 - Suricata-Main] 2024-09-26 09:14:21 Error: detect: error parsing signature "alert http $HOME_NET any -> $EXTERNAL_NET $HTTP_PORTS (msg: "MISP event:https://10.0.37.3/events/view/714"; flow:to_server,established; http.header; content:"notifyhubss.net"; fast_pattern; nocase; http.uri; content:"/4419d5733u64c64888l9223d5belafc887d0.html__;!!OepYZ6Q!6a0JnRhFyhQfncK-LhrwBwz4hNh8MS_qxKKgAFDPEKMOCOgQxgYx7CnrvR6bIX3SIR-AMI9IhS0nwyds8fRelwKk4eFibA$"; nocase; tag:session,600,seconds; classtype:trojan-activity; sid:11031604; rev:1; priority:2; reference:url,https://10.0.37.3/events/view/714;)" from file rules/misp/misp.rules at line 76469
+[2449438 - Suricata-Main] 2024-09-26 09:14:23 Error: detect-sid: invalid character as arg to sid keyword
+[2449438 - Suricata-Main] 2024-09-26 09:14:23 Error: detect: error parsing signature "alert tcp any any -> any any (msg: "MISP event:https://10.0.37.3/events/view/1278"; sid:XX; rev:1; flow:established,to_server; content:"Accept|3a 20 2a 2f 2a|"; nocase; content:"HX1|3a|"; distance:0; within:6; fast_pattern; content:"HX2|3a|"; nocase; distance:0; content:"HX3|3a|"; nocase; distance:0; content:"HX4|3a|"; nocase; distance:0; classtype:trojan-activity; priority:X; sid:11468464;reference:url,https://10.0.37.3/events/view/1278;)" from file rules/misp/misp.rules at line 106142
+[2449438 - Suricata-Main] 2024-09-26 09:14:28 Error: suricata: Loading signatures failed.
+...
+\end{lstlisting}
+\end{figure}

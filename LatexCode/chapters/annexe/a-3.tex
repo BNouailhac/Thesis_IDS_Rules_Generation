@@ -1,0 +1,79 @@
+\begin{figure}[h]%
+    \center%
+\begin{lstlisting}[language=Python].
+# Telechargement des events depuis le "feeds" mis en parametre dans un dossier local
+def download_files(feed_url):
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    os.system(f"wget -r -np -nd -A json -P ./events/ {feed_url}")
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[h]%
+    \center%
+\begin{lstlisting}[language=Python].
+# Reprend tous les evenements telecharges precedemment et les integre dans l'instance locale de MISP.
+def import_events():
+    events_files = glob.glob("./events/*.json")
+    events = []
+    for file in events_files:
+        if (file != "manifest.json"):
+            with open(file, 'r') as f:
+                file = json.load(f)
+            try:
+                misp.add_event(file)
+                print(f'Successfully imported to misp {file}')
+            except Exception as e:
+                print(f'Error importing {file}: {e}')
+    return events
+\end{lstlisting}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h]%
+    \center%
+\begin{lstlisting}[language=Python].
+# Creer un evenement Pouvant etre exporter en regles suricata
+def create_event(_distribution, _threat_level, _analysis, _info, _attribute, _tags):
+    event = MISPEvent()
+
+    # Votre choix de distribution:
+    # 0 - This Organization only
+    # 1 - This community only
+    # 2 - Connected communities
+    # 3 - All communities
+    event.distribution = _distribution
+
+    # niveau de menace:
+    # 1 - High
+    # 2 - Medium
+    # 3 - Low
+    # 4 - Undefined
+    event.threat_level_id = _threat_level
+
+    # Represente le niveau de maturite de l'analyse:
+    # 0 - Initial
+    # 1 - Ongoing
+    # 2 - Complete
+    event.analysis = _analysis
+    event.info = _info
+    event.date = datetime.now().date().isoformat() # Today's date
+
+    # Ajout d'un attribut (IOC) que Suricata peut utiliser, tel qu'un domaine
+    attr = MISPAttribute()
+    attr.category = _attribute["category"]
+    attr.type = _attribute["type"]
+    attr.value = _attribute["value"]
+    attr.to_ids = True  # Mark as to_ids to be used for IDS export
+    attr.comment = _attribute["comment"]
+
+    event.add_attribute(**attr)
+    # Ajout de "tags"
+    for tag in _tags:
+        event.add_tag(tag)
+
+    # Telecharge l'evenement sur l'instance local de MISP
+    response = misp.add_event(event)
+\end{lstlisting}
+\end{figure}

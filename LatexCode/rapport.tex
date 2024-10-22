@@ -1,0 +1,394 @@
+%% @Author: Baptiste NOUAILHAC
+%  @Date:   2024-08
+%% @Class:  MS CYBERSCID.
+
+\documentclass[a4paper, oneside, 12pt, final]{extreport}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\parindent 0cm
+\usepackage{makeidx}
+\makeindex
+\usepackage[lined,boxed,commentsnumbered, ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{exemple}{Example}[chapter]
+\usepackage[french]{babel}
+\usepackage{listings}
+
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+%\usepackage[nottoc]{tocbibind}
+%\addcontentsline{toc}{section}{References}
+
+\providecommand{\keywords}[1]{\textbf{\textit{Mots clés---}} #1}
+\providecommand{\keywordss}[1]{\textbf{\textit{Keywords---}} #1}
+
+\usepackage{etoolbox}
+%\makeatletter
+%\patchcmd{\thebibliography}{%
+%  \chapter*{\bibname}\@mkboth{\MakeUppercase\bibname}%{\MakeUppercase\bibname}}{%
+%  \section{References}}{}{}
+%\makeatother
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\usepackage[nottoc]{tocbibind}
+
+\usepackage{tabularx}
+
+\textwidth 18cm
+\textheight 24cm
+\topmargin -0.5cm
+\oddsidemargin -1cm
+
+% set font encoding for PDFLaTeX or XeLaTeX
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+
+% Enable SageTeX to run SageMath code right inside this LaTeX file.
+% documentation: http://mirrors.ctan.org/macros/latex/contrib/sagetex/sagetexpackage.pdf
+%\usepackage{sagetex}
+\renewcommand*{\contentsname}{Table des matières}
+
+\newcommand{\reportTitle} {%
+  %\textsc{Graduation Project Report}
+  \textsc{Projet de Fin d'\'etudes}
+}
+
+\newcommand{\reportAuthor} {%
+  Nouailhac \textsc{Baptiste}%
+}
+
+\newcommand{\reportSubject} {%
+  \LARGE{Comment mettre en place un outil automatisé de génération de règles de détection d'intrusion ?}%
+}
+
+\newcommand{\dateSoutenance} {%
+ 18/10/2024%
+}
+
+\newcommand{\studyDepartment} {%
+  Agence Monégasque de Sécurité Numérique %Statistique
+}
+
+\newcommand{\ITBS} {%
+  %IT Business School
+\\ Ecole Supérieure Privée des Technologies de l'Information et de Management de Nabeul
+}
+
+%\newcommand{\codePFE} {% Reference
+%  Code PFE%
+%}
+
+\newcommand{\juryPresident} {%
+  CDT Alain \textsc{MENELET}%
+}
+\newcommand{\juryPresidentDesc} {%
+  \textbf{Président du jury}%
+}
+
+\newcommand{\juryMemberOne} {%
+  CNE Sébastien \textsc{REY}%
+}
+\newcommand{\juryMemberOneDesc} {%
+  \textbf{Relecteur} %Mentor
+}
+\newcommand{\juryMemberTwo} {%
+  Christian \textsc{PEREZ}%
+}
+\newcommand{\juryMemberTwoDesc} {%
+  \textbf{Membre du jury}  %Mentor
+}
+
+\newcommand{\juryMemberThree} {%
+  Caroline \textsc{FOSSATI}%%
+}
+\newcommand{\juryMemberThreeDesc} {%
+  \textbf{Membre du jury}  %Mentor
+}
+
+\newcommand{\juryMemberFour} {%
+  Bruno \textsc{VALENTIN}%
+}
+\newcommand{\juryMemberFourDesc} {%
+  \textbf{Tuteur de stage} %Mentor
+}
+
+\newcommand{\specialcell}[1]{%
+  \begin{tabularx}{\textwidth}{@{}X@{}}#1\end{tabularx}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Add your own commands here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\MyCommand} {%
+  Does nothing really%
+}
+
+
+% used in maketitle
+\title{\reportSubject}
+\author{\reportAuthor}
+
+% Enable SageTeX to run SageMath code right inside this LaTeX file.
+% documentation: http://mirrors.ctan.org/macros/latex/contrib/sagetex/sagetexpackage.pdf
+%\usepackage{sagetex}
+
+%\hypersetup{
+%  pdftitle={\reportTitle~-~\reportSubject},%
+%  pdfauthor={\reportAuthor},%
+%  pdfsubject={\reportSubject},%
+%  pdfkeywords={report} {internship} {pfe} {enis}
+%}
+
+\usepackage{graphics}
+\usepackage{graphicx}
+
+\usepackage{hyperref}
+\usepackage[acronym,toc,section=chapter]{glossaries}
+\makeglossaries
+
+\newacronym{abc}{ABC}{A contrived acronym}
+\newacronym{efg}{EFG}{Another acronym}
+\newacronym{svm}{SVM}{Support Vector Machines}
+
+\pagenumbering{roman}
+\usepackage[utf8]{inputenc}
+
+
+\begin{document}
+\renewcommand\bibname{Bibliographie}
+\renewcommand{\listfigurename}{Table des Figures}
+\renewcommand{\listtablename}{Table des Tableaux}
+\thispagestyle{empty}
+\begin{titlepage}
+\begin{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THE HEADER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace*{-3cm}
+\includegraphics[scale=0.14]{assets/cm.jpg}
+\hfill
+\includegraphics[scale=0.1]{assets/eae.jpg}
+\vspace{0.5cm}
+
+
+\vspace{2cm}
+
+%\includegraphics[scale=0.1]{assets/logonoir.png}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THE PAGE CONTENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{10pt} {%
+  \renewcommand*{\familydefault}{\defaultFont}
+  \fontsize{46pt}{46pt}\selectfont%
+}
+
+\vspace{5pt}
+
+\vspace{15pt}
+{\textit{Thèse professionnelle soumise afin d'obtenir le diplôme}}\\
+
+\vspace{10pt}
+{\textbf{\large Mastère spécialisé Cybersécurité des systèmes complexes pour l'Industrie et la Défense}}\\
+
+\vspace{5pt}
+\textbf{\textit{Réalisée par}}\\
+\vspace{10pt} {%
+  \fontsize{14pt}{14pt}\selectfont%
+  {\bfseries\Large\sc \reportAuthor}\\
+}%
+
+\vspace{5pt} {%
+  \renewcommand*{\familydefault}{\defaultFont}
+  \fontsize{27pt}{27pt}\selectfont%
+  \rule{0.5\textwidth}{.4pt}\\
+  \vspace{10pt}
+  \reportSubject{}\\%
+  \vspace{10pt}
+  \rule{0.5\textwidth}{.4pt}
+}
+
+\vspace{30pt}
+Soutenue le\, \dateSoutenance\,\, devant le Jury compos\'e de :\\
+%Soutenu le \dateSoutenance, devant la commission d'examen:\\
+\vspace{10pt}
+\begin{tabular}{p{0.3\linewidth} p{0.2\linewidth}}
+  \juryPresident{} & \juryPresidentDesc{}\\
+  \juryMemberOne{} & \juryMemberOneDesc{}\\
+  \juryMemberTwo{} & \juryMemberTwoDesc{}\\
+  \juryMemberThree{} & \juryMemberThreeDesc{}\\
+  \juryMemberFour{} & \juryMemberFourDesc{}\\
+\end{tabular}
+
+%\vfill
+
+\vspace{15pt}%
+\textbf{\textit{Projet de Fin d'Etudes fait \`a}}\\
+\vspace{5pt}
+\studyDepartment
+\vspace{5pt}
+
+\includegraphics[scale=0.15]{assets/LogoAMSN.jpg}
+\end{center}
+\end{titlepage}
+
+% ###############################
+% # HELP COMMANDS               #
+% ###############################
+%
+% -1 \part{part}
+%  0 \chapter{chapter}
+%  1 \section{section}
+%  2 \subsection{subsection}
+%  3 \subsubsection{subsubsection}
+%  4 \paragraph{paragraph}
+%  5 \subparagraph{subparagraph}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dédicace et Remerciements
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+%\nopagebreak{%
+% And maybe a quote here
+% \raggedright\hspace{5.75cm} To all of you,~\\
+%\raggedright\hspace{7.75cm} I dedicate this work.
+%  \raggedleft\normalfont\large\itshape{} \reportAuthor\par%
+%}
+%
+%\cleardoublepage%
+
+\chapter*{Remerciements}
+%\chapter*{Remerciements}
+%\addcontentsline{toc}{chapter}{Thanks}
+\thispagestyle{empty}
+%
+%Au terme de ce travail (A l'issue de ce travail), je tiens à remercier M., Mme, Pr., Dr. pour sa disponibilité et ses conseils judicieux. \\
+
+J’aimerais tout d’abord remercier l'Agence Monégasque de Sécurité Numérique et plus particulièrement Frédéric FAUTRIER, son directeur, pour avoir accepté de m'accueillir en tant que stagiaire au sein de l'agence. \\
+
+Je suis très reconnaissant envers Bruno VALENTIN (mon tuteur de stage et responsable du CERT-MC) et Sébastien ABBONDANZA (responsable du SOC-MC) qui m'ont introduit et accompagné tout au long de mon stage. Ils m'ont fait confiance pour mener à bien les missions qu'ils m'ont attribuées, en me laissant une grande liberté d'action dans mon travail voire émettre des propositions.\\
+
+Je remercie également toute l’équipe pédagogique du Mastère spécialisé CYBERSCID ainsi que les intervenants de la formation qui ont toujours été disponibles pour dispenser de l'aide et des conseils.
+
+
+\input{chapters/resume.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Divers chapitres
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+%\addcontentsline{toc}{chapter}{\contentsname}
+
+\listoffigures
+%\addcontentsline{toc}{chapter}{Liste des Figures}
+%\listoftables
+%\addcontentsline{toc}{chapter}{Liste des Tableaux}
+\cleardoublepage
+
+\newpage
+\pagenumbering{arabic}
+\chapter*{Introduction}
+\label{chap:Introduction}
+{\fontsize{14pt}{16pt}\selectfont
+    \input{chapters/introduction.tex}
+}
+
+
+\chapter{Contexte du projet}%
+\label{chap:Contexte du projet}
+\input{chapters/chapitre1/chapitre1.tex}
+
+\chapter{Définition du sujet}%
+\label{chap:2}
+\input{chapters/chapitre2/chapitre2.tex}
+
+\chapter{Réalisation de la solution}%
+\label{chap:3}
+\input{chapters/chapitre3/chapitre3.tex}
+
+\chapter{Résultat}%
+\label{chap:4}
+\input{chapters/chapitre4/chapitre4.tex}
+
+\chapter*{Conclusion et Perspectives}
+\label{chap:conclusion}
+{\fontsize{14pt}{16pt}\selectfont
+    \input{chapters/conclusion.tex}
+}
+
+\chapter*{Glossaire}
+\label{chap:glossaire}
+\input{chapters/glossaire.tex}
+
+\newpage
+\appendix
+
+\chapter*{Annexe}
+\label{chap:Annexe}
+\input{chapters/annexe/annexe.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Don't touch this, it is auto generated
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\nocite{*}
+
+\bibliographystyle{plain}
+
+\bibliography{Biblio.bib}
+\label{biblio}
+
+\cleardoublepage%
+
+\addtocontents{toc}{\protect\setcounter{tocdepth}{3}}
+
+\printglossaries
+\printindex
+
+%\input{Résumé}
+
+
+\end{document}

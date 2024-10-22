@@ -1,0 +1,21 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{1em}
+
+La gestion des sondes de détection peut être perçue comme une tâche complexe et contraignante pour les organisations impliquées dans la supervision des réseaux. Alors que les solutions proposées par des sociétés privées sont souvent très coûteuses, mon travail a permis de créer un outil interne facilitant le travail quotidien des membres du CERT-MC. Le \hyperref[chap3:intro]{\textit{\textbf{processus de gestion des sondes}}} de l'Agence a ainsi pu recevoir les améliorations suivantes:\\
+
+\vspace{1em}
+
+\begin{itemize}[itemsep=1em]
+    \item[•] Les règles envoyées aux sondes sont désormais contrôlées avant d'être utilisées, minimisant ainsi le risque d’erreurs au moment du déploiement sur les sondes ;
+    \item[•] Il est maintenant possible de désactiver ou de modifier des règles spécifiques parmi celles envoyées aux sondes, offrant une meilleure flexibilité dans leur gestion ;
+    \item[•] Les règles provenant de MISP peuvent désormais être intégrées directement dans les sondes, enrichissant ainsi les sources d’informations pour une meilleure détection des menaces ;
+    \item[•] Les règles sont catégorisées, et il est possible de désactiver certaines catégories en fonction des besoins spécifiques de chaque sonde.\\
+\end{itemize}
+
+\newpage
+
+Ces améliorations ont considérablement optimisé le processus d'alimentation des sondes de l'Agence.  En particulier, la possibilité de filtrer et d'ajuster dynamiquement les règles réduit les faux positifs, minimise la surcharge du système et facilite le travail des analystes du SOC-MC en leur fournissant un outil simple de gestion des règles.\\
+
+A l'avenir, l'AMSN souhaite poursuivre le développement de l'outil, notamment son interfaçage avec MISP, afin d'étendre les capacités de détection de l'Agence par l'ajout de nouveaux flux d'information. Le dilemme de l'optimisation des règles, présentes sur les sondes, continuera à se poser et nécessitera un renforcement des relations entre l'Agence et ses OIV pour une meilleure sélection des catégories dont ils relèvent.
