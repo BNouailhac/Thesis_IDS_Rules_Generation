@@ -5,7 +5,3 @@ This Professional thesis was submitted to obtain the diploma Specialised Masters
 
 # Subject
 "How to set up an automated tool for generating intrusion detection rules?"
-
-# Content
-
-
