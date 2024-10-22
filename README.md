@@ -8,4 +8,4 @@ This Professional thesis was submitted to obtain the diploma Specialised Masters
 
 ## Contents 
 * The thesis in pdf format: [CEC_MSCyberSCID_thesis_Baptiste_NOUAILHAC.pdf](https://github.com/BNouailhac/Thesis_IDS_Rules_Generation/blob/main/CEC_MSCyberSCID_thesis_Baptiste_NOUAILHAC.pdf)
-* The Latex code used to generate the above pdf : [LatexCode](https://github.com/BNouailhac/Thesis_IDS_Rules_Generation/blob/main/CEC_MSCyberSCID_thesis_Baptiste_NOUAILHAC.pdf)
+* The Latex code used to generate the above pdf : [LatexCode](https://github.com/BNouailhac/Thesis_IDS_Rules_Generation/tree/main/LatexCode)
